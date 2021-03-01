@@ -4,6 +4,7 @@ puts "Exercise 1"
 puts "----------"
 # ApplicationRecord for rails 5? using rails 5.1.4?
 class Store < ActiveRecord::Base
+  has_many :employees
 end
 
 Store.create(name: "Burnaby", annual_revenue: 300000, mens_apparel: true, womens_apparel: true)
