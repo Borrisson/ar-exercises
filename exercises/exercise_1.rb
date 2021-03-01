@@ -11,7 +11,8 @@ class Store < ActiveRecord::Base
 
   def has_atleast_one_gender_apperal
     if !mens_apparel && !womens_apparel
-      errors.add(:apparel, "Must have atleast one line of clothing")
+      errors.add(:mens_apparel, "Must have atleast one true boolean for either gender apparel")
+      errors.add(:womens_apparel, "Must have atleast one true boolean for either gender apparel")
     end
   end
 end
