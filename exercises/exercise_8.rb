@@ -8,3 +8,4 @@ require_relative "./exercise_6"
 require_relative "./exercise_7"
 
 p Employees.last
+p Employees.find(4)
