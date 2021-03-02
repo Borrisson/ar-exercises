@@ -14,8 +14,19 @@ class Employees < ActiveRecord::Base
   validates :last_name, presence: true
   validates :store_id, presence: true
   validates :hourly_rate, :inclusion => 40..200
+  before_create :random_password_generator
+
+  private
+
+  def random_password_generator
+    if self.password == nil
+      self.password = (0..8).map { (65 + rand(26)).chr }.join
+    end
+  end
 end
 
 @store1.employees.create(first_name: "Luc", last_name: "Borris", hourly_rate: 40)
 @store2.employees.create(first_name: "Caroline", last_name: "Aube", hourly_rate: 60)
 @store2.employees.create(first_name: "Melanie", last_name: "Herbert", hourly_rate: 100)
+
+Employees.create(first_name: "Melanie", last_name: "Herbert", hourly_rate: 100, store_id: 1)
